@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo Net Ninja</h1>
+    <div id="todo-table">
+        <form id='todo-form'>
+            <input type="text" name="item" placeholder="Add a new item..." required>
+            <button type="submit">Add Todo</button>
+        </form>
+        <ul>
+            <% todos.forEach( (element) => {%>
+                <li><%=element.cont%></li>
+            <%});%>
+        </ul>
+    </div>
+
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+    <script src="scripts/todoScript.js"></script>
+</body>
+</html>
