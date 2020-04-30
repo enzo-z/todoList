@@ -1,8 +1,21 @@
+const mongoose = require("mongoose");
 const express = require('express');
 const todoController = require('./controllers/todoController');
 
 const app = express();
-const port = 1234;
+
+/**Connecting MongoDB */
+mongoose.connect('mongodb://127.0.0.1:27017/learnTodo', {
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+});
+const dbConnection = mongoose.connection;
+
+dbConnection.on("open", ()=> {console.log("Connection made with success on mongodb")});
+dbConnection.on("error", (error)=> {console.log("Something went wrong:\n"+error)});
+
+const port = 3000;
+
 
 
 app.use(express.json());
@@ -16,7 +29,7 @@ app.set('view engine', 'ejs');
 app.use("/",express.static('./public'));
 
 /**Todo Controller */
-todoController(app, __dirname);
+todoController(app);
 
 
 app.listen(port, '127.0.0.1', () =>{
